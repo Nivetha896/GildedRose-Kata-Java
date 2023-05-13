@@ -107,4 +107,29 @@ class GildedRoseTest {
 		assertEquals(-1, app.items[0].sellIn);
 		assertEquals(0, app.items[0].quality);
 	}
+
+	// common
+	@Test
+	public void lowers_quality_twice_when_past_expiration_date() throws Exception {
+		Item[] items = new Item[] { new ItemBuilder().called("Any Item").pastExpirationDate().ofQuality(10).build() };
+		GildedRose app = new GildedRose(items);
+
+		app.updateQuality();
+
+		assertEquals(-1, app.items[0].sellIn);
+		assertEquals(8, app.items[0].quality);
+	}
+
+	// Common
+	@Test
+	public void never_lowers_quality_value_below_zero() throws Exception {
+		Item[] items = new Item[] { new ItemBuilder().called("Any Item").toBeSoldIn(10).ofQuality(0).build() };
+		GildedRose app = new GildedRose(items);
+
+		app.updateQuality();
+
+		assertEquals(9, app.items[0].sellIn);
+		assertEquals(0, app.items[0].quality);
+	}
+
 }
