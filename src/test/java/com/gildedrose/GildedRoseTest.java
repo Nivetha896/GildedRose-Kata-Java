@@ -2,7 +2,6 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
@@ -43,7 +42,7 @@ class GildedRoseTest {
 		assertEquals(10, app.items[0].quality);
 	}
 
-	// Backstage Passes
+//Backstage Passes
 	@Test
 	public void increases_quality_at_the_end_of_each_day() throws Exception {
 		Item[] items = new Item[] { new ItemBuilder().called("Backstage passes to a TAFKAL80ETC concert").toBeSoldIn(20)
@@ -124,6 +123,30 @@ class GildedRoseTest {
 	@Test
 	public void never_lowers_quality_value_below_zero() throws Exception {
 		Item[] items = new Item[] { new ItemBuilder().called("Any Item").toBeSoldIn(10).ofQuality(0).build() };
+		GildedRose app = new GildedRose(items);
+
+		app.updateQuality();
+
+		assertEquals(9, app.items[0].sellIn);
+		assertEquals(0, app.items[0].quality);
+	}
+
+	// Conjured Items
+	@Test
+	public void Conjured_items_decreases_quality_twice() throws Exception {
+		Item[] items = new Item[] { new ItemBuilder().called("Soulstones").toBeSoldIn(10).ofQuality(10).build() };
+		GildedRose app = new GildedRose(items);
+
+		app.updateQuality();
+
+		assertEquals(9, app.items[0].sellIn);
+		assertEquals(8, app.items[0].quality);
+	}
+
+	// Conjured Items
+	@Test
+	public void never_lowers_soulstones_quality_below_zero() throws Exception {
+		Item[] items = new Item[] { new ItemBuilder().called("Soulstones").toBeSoldIn(10).ofQuality(0).build() };
 		GildedRose app = new GildedRose(items);
 
 		app.updateQuality();
