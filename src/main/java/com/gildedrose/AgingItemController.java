@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class AgingItemController {
+public class AgingItemController  implements Updater{
 
 	public void update(Item item) {
 		if (item.quality < 50) {

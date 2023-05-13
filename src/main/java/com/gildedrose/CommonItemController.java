@@ -1,8 +1,8 @@
 package com.gildedrose;
 
-public class CommonItemController {
+public class CommonItemController implements Updater{
 	
-	public void update(Item item) {
+	public void update(Item item)  {
 		if (item.quality > 0) {
 			item.quality--;
 		}
