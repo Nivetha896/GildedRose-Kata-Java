@@ -6,7 +6,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
-
 	// Aged Brie
 	@Test
 	public void quality_increases_at_the_end_of_each_day() throws Exception {
@@ -30,5 +29,17 @@ class GildedRoseTest {
 		assertEquals(9, app.items[0].sellIn);
 		assertEquals(50, app.items[0].quality);
 	}
+	
+	// Sulfuras
+		@Test
+		public void never_lowers_sulfuras_quality_and_sellIn_values() throws Exception {
+			Item[] items = new Item[] {
+					new ItemBuilder().called("Sulfuras, Hand of Ragnaros").toBeSoldIn(10).ofQuality(10).build() };
+			GildedRose app = new GildedRose(items);
 
+			app.updateQuality();
+
+			assertEquals(10, app.items[0].sellIn);
+			assertEquals(10, app.items[0].quality);
+		}
 }
