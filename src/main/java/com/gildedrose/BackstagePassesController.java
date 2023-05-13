@@ -1,5 +1,13 @@
 package com.gildedrose;
 
+/**
+ * This class implements the Updater interface and provides the logic for
+ * updating the quality and sellIn values of Backstage Passes items. It
+ * increases the quality of the item as the sellIn value decreases, with a
+ * greater increase as the concert date approaches. When the concert is over,
+ * the quality drops to zero.
+ *
+ */
 public class BackstagePassesController implements Updater {
 
 	public void update(Item item) {
