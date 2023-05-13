@@ -6,26 +6,29 @@ import static java.util.Arrays.asList;
 
 import com.google.common.collect.ImmutableMap;
 
+/**
+ * A class that provides methods for determining the type of an item and
+ * creating an updater object that can be used to update the item's sell-in
+ * value and quality.
+ */
 public class ItemUpdateHandler {
 
 	private static Map<String, List<String>> itemTypes = ImmutableMap.<String, List<String>>builder()
 			.put("backstage-passes", asList("Backstage passes to a TAFKAL80ETC concert"))
-			.put("legendary", asList("Sulfuras, Hand of Ragnaros"))
-			.put("improves-with-age", asList("Aged Brie"))
-			.put("conjured", asList("Conjured Mana Cake"))
-			.build();
+			.put("legendary", asList("Sulfuras, Hand of Ragnaros")).put("improves-with-age", asList("Aged Brie"))
+			.put("conjured", asList("Conjured Mana Cake")).build();
 
 	public static Updater updaterFor(Item currentItem) {
 		if (improvesWithAge(currentItem)) {
-			return new AgingItemController();
+			return new IncreasesWithAgeUpdater();
 		} else if (isLegendary(currentItem)) {
-			return new SulfurasController();
+			return new SulfurasUpdater();
 		} else if (isBackstagePass(currentItem)) {
-			return new BackstagePassesController();
+			return new ConcertQualityUpdater();
 		} else if (isConjured(currentItem)) {
-			return new ConjuredItemController();
+			return new DegradableItemUpdater();
 		} else {
-			return new CommonItemController();
+			return new StandardUpdater();
 		}
 	}
 

@@ -5,7 +5,7 @@ package com.gildedrose;
  * for the legendary items that never change their sell-in value and their
  * quality
  */
-public class SulfurasController implements Updater {
+public class SulfurasUpdater implements Updater {
 
 	public void update(Item item) {
 		//since the Sulfuras item is a legendary item, its properties never change. 

@@ -6,7 +6,7 @@ package com.gildedrose;
  * quality of the item is less than 50, it increases by 1. The sell-in value is
  * decremented by 1.
  */
-public class AgingItemController implements Updater {
+public class IncreasesWithAgeUpdater implements Updater {
 
 	public void update(Item item) {
 		if (item.quality < 50) {

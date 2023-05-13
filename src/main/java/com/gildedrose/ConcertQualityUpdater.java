@@ -8,7 +8,7 @@ package com.gildedrose;
  * the quality drops to zero.
  *
  */
-public class BackstagePassesController implements Updater {
+public class ConcertQualityUpdater implements Updater {
 
 	public void update(Item item) {
 		if (isAfterTheConcert(item)) {

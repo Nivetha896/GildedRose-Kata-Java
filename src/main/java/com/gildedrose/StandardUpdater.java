@@ -10,7 +10,7 @@ package com.gildedrose;
  * quality of a common item is already zero, it will not decrease any further.
  */
 
-public class CommonItemController implements Updater {
+public class StandardUpdater implements Updater {
 
 	public void update(Item item) {
 
