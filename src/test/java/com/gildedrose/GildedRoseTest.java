@@ -134,7 +134,7 @@ class GildedRoseTest {
 	// Conjured Items
 	@Test
 	public void Conjured_items_decreases_quality_twice() throws Exception {
-		Item[] items = new Item[] { new ItemBuilder().called("Soulstones").toBeSoldIn(10).ofQuality(10).build() };
+		Item[] items = new Item[] { new ItemBuilder().called("Conjured Mana Cake").toBeSoldIn(10).ofQuality(10).build() };
 		GildedRose app = new GildedRose(items);
 
 		app.updateQuality();
@@ -146,7 +146,7 @@ class GildedRoseTest {
 	// Conjured Items
 	@Test
 	public void never_lowers_soulstones_quality_below_zero() throws Exception {
-		Item[] items = new Item[] { new ItemBuilder().called("Soulstones").toBeSoldIn(10).ofQuality(0).build() };
+		Item[] items = new Item[] { new ItemBuilder().called("Conjured Mana Cake").toBeSoldIn(10).ofQuality(0).build() };
 		GildedRose app = new GildedRose(items);
 
 		app.updateQuality();
